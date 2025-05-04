@@ -2,23 +2,18 @@ services:
   - type: web
     name: ai-study-n8n
     env: docker
-    plan: free
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: Dockerfile
+    plan: starter          # 0.5 CPU / 512 MB RAM
     autoDeploy: true
+    region: oregon
     envVars:
       - key: N8N_BASIC_AUTH_ACTIVE
-        value: true
+        value: "true"
       - key: N8N_BASIC_AUTH_USER
         value: admin
       - key: N8N_BASIC_AUTH_PASSWORD
-        value: yourpassword
-      - key: NODE_FUNCTION_ALLOW_EXTERNAL
-        value: pdf-parse,mammoth,textract
-      - key: N8N_CUSTOM_EXTENSIONS
-        value: /data/custom
-      - key: N8N_ENABLE_CUSTOM_FOLDERS
-        value: true
-      - key: N8N_EXECUTIONS_MODE
-        value: own
+        value: changeMeNow
       - key: WEBHOOK_URL
         value: https://ai-study-n8n.onrender.com
+      - key: GEMINI_API_KEY
+        sync: false         # mark as secret in Render UI
