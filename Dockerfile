@@ -1,9 +1,7 @@
-FROM n8nio/n8n:1.86.1
+FROM n8nio/n8n:1.86.1-root
 
-# Use Alpine's package manager to install LibreOffice
 RUN apk update && apk add --no-cache libreoffice
 
-# Set up custom modules
 RUN mkdir -p /data/custom
 WORKDIR /data/custom
 RUN npm init -y && npm install pdf-parse mammoth textract
